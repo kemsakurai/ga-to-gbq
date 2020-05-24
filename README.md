@@ -40,18 +40,29 @@ Commands:
 * save_ga    
 ```console
 export FLASK_APP=cli
-export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
-flask job save_gsc {GSC_PROPERTY_NAME} \
-{GSC_CREDENTIALS_PATH} \
-{DATE} {BUCKET_NAME} {FILE_DIR_NAME}
+DATE="2020-05-18"
+VIEW_ID="10xxxxxxx"
+GA_CREDENTIALS_PATH=".ga_client.json"
+flask job save_ga "$DATE" "$VIEW_ID" "$GA_CREDENTIALS_PATH"
 ```
 
-* load_gbq     
+* merge_data_to_gcs     
 ```console
-export FLASK_APP=cli
 export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
-flask job load_gbq {DATE} \
-{DATA_SET_ID} \
-{GCS_DIR}
+export FLASK_APP=cli
+DATE="2020-05-18"
+BUCKET_NAME="monotalk.appspot.com"
+FILE_DIR_NAME="GA Statistics/www.monotalk.xyz/"
+flask job merge_data_to_gcs "$DATE" "$BUCKET_NAME" "$FILE_DIR_NAME"
+```
+
+* load_to_gbq
+```console
+export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
+export FLASK_APP=cli
+DATE="2020-05-18"
+DATA_SET_ID="monotalk.GA_Statistics"
+GCS_DIR="gs://monotalk.appspot.com/GA Statistics/www.monotalk.xyz/"
+flask job load_to_gbq "$DATE" "$DATA_SET_ID" "$GCS_DIR"
 ```
 

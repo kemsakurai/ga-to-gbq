@@ -8,6 +8,7 @@ from flask.cli import with_appcontext
 @click.command('load_to_gbq', help="Load to Google Big Query from Google Cloud Storage")
 @click.argument('date')
 @click.argument('data_set_id')
+@click.argument('gcs_dir')
 @with_appcontext
 def load_to_gbq(date, data_set_id, gcs_dir):
     table_name = conf.TABLE_PREFIX + date.replace("-", "")

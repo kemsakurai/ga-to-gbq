@@ -66,3 +66,12 @@ GCS_DIR="gs://monotalk.appspot.com/GA Statistics/www.monotalk.xyz/"
 flask job load_to_gbq "$DATE" "$DATA_SET_ID" "$GCS_DIR"
 ```
 
+* compress_gcs_data   
+```console
+export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
+export FLASK_APP=cli
+DATE="2020-05-18"
+BUCKET_NAME="monotalk.appspot.com"
+FILE_DIR_NAME="GA Statistics/www.monotalk.xyz/"
+flask job compress_gcs_data "$DATE" "$BUCKET_NAME" "$FILE_DIR_NAME"
+```

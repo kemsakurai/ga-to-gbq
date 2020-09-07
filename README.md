@@ -23,6 +23,7 @@ pip install -r requirements.txt
 ```
 
 -----
+
 ## Command usage      
 
 * **job list**   
@@ -78,6 +79,7 @@ GCS_DIR="gs://monotalk.appspot.com/GA Statistics/www.monotalk.xyz/"
 flask job load_to_gbq "$DATE" "$DATA_SET_ID" "$GCS_DIR"
 ```
 Load the JSON file uploaded to Google Cloud Storage into Google BigQuery.   
+
 * **compress_gcs_data**   
 ```console
 export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
@@ -224,8 +226,8 @@ done
 MAILTO="your.mail@example.com"
 MAILFROM="error-notifications@example.com"
 LOG_DIR="/var/log"
-# ga-to-gbq
-SH_GA_TO_GBQ="/home/jobuser/scripts/run_ga_to_gbq.sh"
+# gsc-to-gbq
+SH_GSC_TO_GBQ="/home/jobuser/scripts/run_gsc_to_gbq.sh"
 
 00 02 * * * /bin/sh $SH_GA_TO_GBQ saveGa &>> $LOG_DIR/ga_to_gbq_saveGa.log && /bin/sh $SH_GA_TO_GBQ mergeDataToGcs &>> $LOG_DIR/ga_to_gbq_mergeDataToGcs.log && /bin/sh $SH_GA_TO_GBQ loadToGbq &>> $LOG_DIR/ga_to_gbq_loadToGbq.log && /bin/sh $SH_GA_TO_GBQ compressGcsData &>> $LOG_DIR/ga_to_gbq_compressGcsData.log
 ```
@@ -235,4 +237,3 @@ SH_GA_TO_GBQ="/home/jobuser/scripts/run_ga_to_gbq.sh"
 ## LICENSE   
 
 MIT
-
